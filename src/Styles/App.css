@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+:root {
+  --bg-primary: hsl(0, 0%, 100%);
+  --bg-dirty: hsl(0, 0%, 93%);
+  --bg-secondary: #0245a3ff;
+  --font-primary: #000000ff;
+  --font-secondary: #fefefe;
+  --light: #ffffff;
+  --mid: #d5d5d5;
+  --light-blue: rgb(51, 96, 159);
+  --text-dark: hsl(0, 0%, 23%);
+  --text-light: hsl(0, 0%, 35%);
+  --error: #fda2a2;
+}
+
+/* :root .dark-mode {
+  --bg-primary: #0245a3ff;
+  --bg-secondary: #fefefe;
+  --font-primary: #fefefe;
+  --font-secondary: #000000ff;
+  --dark: #07689f;
+  --darkest: #05486e;
+} */
+
+span, div, p {
+  color: inherit;
+}
+
+#root {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  color: var(--text-dark)
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-dirty);
+  overflow: scroll;
+}
+
+
+.round-btns {
+  height: fit-content;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem .25rem;
+  border: 1px solid var(--font-secondary);
+  border-radius: 1rem;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+
+.round-btns:disabled {
+  color: var(--mid);
+}
+
+.btn-on-main {
+  border: 1px solid var(--bg-secondary);
+  width: 100px;
+}
+
+.blue-btn {
+  font-weight: 300;
+  background-color: var(--bg-secondary);
+  color: var(--font-secondary);
+}
+
+.white-btn {
+  font-weight: 400;
+  background-color: var(--bg-primary);
+  color: var(--bg-secondary);
+}
+
+.red-btn {
+  font-weight: 400;
+  background-color: #00000000;
+  color: var(--error);
+  border: 1px solid var(--error);
+}
+
+
+input {
+  border: none;
+  outline: 2px solid var(--mid);
+  border-radius: 6px;
+  transition: all ease-in .3s;
+}
+
+input:focus {
+  outline: 2px solid var(--light-blue);
+}
