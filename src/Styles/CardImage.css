@@ -4,7 +4,7 @@
 }
 
 .card {
-  background-image: url("/Users/dan/Web Development/The Bridge/PayPulp/PayPulpFront/src/Assets/4._Developer.jpg");
+  background-image: url("../Assets/4._Developer.jpg");
   height: 150px;
   width: 245px;
   padding: 1.1rem;
@@ -16,7 +16,7 @@
   backdrop-filter: blur(2rem);
   -webkit-backdrop-filter: blur(2rem);
   background: rgb(255, 255, 255);
-  background: center url("/Users/dan/Web Development/The Bridge/PayPulp/PayPulpFront/src/Assets/4._Developer.jpg"),linear-gradient(
+  background: center url("../Assets/4._Developer.jpg"),linear-gradient(
     150deg,
     rgba(255, 255, 255, 0.4360337885154062) 0%,
     rgba(255, 255, 255, 0) 55%,
