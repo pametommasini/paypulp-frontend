@@ -14,4 +14,9 @@ export default class Dates {
     const formatDate = `${year}-${month > 9 ? month : '0' + month}-${day > 9 ? day : '0' + day}`
     return formatDate
   }
+
+  static stringToLocaleString = (dateString) => {
+    const date = new Date(dateString).toLocaleDateString()
+    return date.toLocaleString()
+  }
 }

@@ -56,11 +56,11 @@ const UserProfile = () => {
       <h2 className="profile-title">Profile</h2>
       <DashboardCard className="profile-basic-info-card">
         <div className="profile-basic-info">
-          <Avatar />
+          <Avatar sx={{ width: 100, height: 100 }} />
           <h2>{`${userInfo.firstName} ${userInfo.lastName}`}</h2>
-          <p>{userInfo.email}</p>
-          <p>{userInfo.phone}</p>
-          <p>Member since: {new Date(userInfo.creationTime).toLocaleDateString()}</p>
+          <p>Email: {userInfo.email}</p>
+          <p>Phone: {userInfo.phone}</p>
+          <p>Member since: {Dates.stringToLocaleString(userInfo.creationTime)}</p>
         </div>
       </DashboardCard>
       <DashboardCard className="profile-costumer-info-card">
