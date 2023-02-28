@@ -19,7 +19,6 @@ export default function NavBar() {
   const navigate = useNavigate()
 
   const signOut = () => {
-    console.log('signout')
     localStorage.clear()
     setUserInfo({})
     navigate('')

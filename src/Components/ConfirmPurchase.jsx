@@ -1,6 +1,6 @@
 import { Container, Paper } from '@mui/material'
 import Gateway from '../Services/PaymentGateway'
-import CardImage from './CardImage'
+import CardImage from './Dashboard/CardImage'
 
 const ConfirmPurchase = ({ product, userInfo, setSubmitState }) => {
   const confirmPayment = async () => {

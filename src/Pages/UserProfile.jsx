@@ -1,7 +1,7 @@
 import { Avatar } from '@mui/material'
 import { useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import DashboardCard from '../Components/DashboardCard'
+import DashboardCard from '../Components/Dashboard/DashboardCard'
 import CustomerInfo from '../Components/Profile/CustomerInfo'
 import { userContext } from '../Context/UserContext'
 import Dates from '../Helpers/Dates'

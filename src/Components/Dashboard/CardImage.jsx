@@ -1,5 +1,5 @@
-import '../Styles/CardImage.css'
-import { userContext } from '../Context/UserContext'
+import '../../Styles/CardImage.css'
+import { userContext } from '../../Context/UserContext'
 import { useContext } from 'react'
 
 const CardImage = () => {

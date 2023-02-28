@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import CardImage from '../Components/CardImage'
-import DashboardCard from '../Components/DashboardCard'
-import TransactionsTable from '../Components/TransactionsTable'
+import CardImage from '../Components/Dashboard/CardImage'
+import DashboardCard from '../Components/Dashboard/DashboardCard'
+import TransactionsTable from '../Components/Transactions/TransactionsTable'
 import { userContext } from '../Context/UserContext'
 import '../Styles/Dashboard.css'
 

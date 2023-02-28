@@ -1,4 +1,4 @@
-import '../Styles/TrasactionsTable.css'
+import '../../Styles/TrasactionsTable.css'
 import TransactionEntry from './TransactionEntry'
 
 const TransactionsTable = ({ transactions }) => {

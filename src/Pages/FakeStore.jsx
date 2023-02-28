@@ -1,4 +1,4 @@
-import DashboardCard from '../Components/DashboardCard'
+import DashboardCard from '../Components/Dashboard/DashboardCard'
 import '../Styles/FakeStore.css'
 
 const FakeStore = () => {
