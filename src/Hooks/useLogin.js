@@ -34,10 +34,11 @@ export default function useLogin(isOnGateway, setIsAuth) {
         return res.status
       }
     } catch (error) {
-      console.log(error)
-      setLoginError(true)
+      if (error.code === 'ERR_NETWORK') setLoginError(error.code)
+      if (error.response?.status === 401) setLoginError(error.response.status)
+      console.error(error)
     }
   }
 
-  return { loginError, onSubmit }
+  return { loginError, setLoginError, onSubmit }
 }

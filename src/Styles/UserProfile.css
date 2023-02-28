@@ -2,7 +2,6 @@
   align-self: center;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  /* grid-template-rows: repeat(12, 1fr); */
   width:100%;
   max-width: 1400px;
   padding: 0 2rem;
@@ -42,7 +41,7 @@
 
 .profile-info-field {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   width: 100%;
 }
 

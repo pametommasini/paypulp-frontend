@@ -17,7 +17,9 @@ const Submitting = ({ submitState, location, goBack }) => {
           {location === 'signup' && <div>There has been a problem with your submission</div>}
           {location === 'gateway' && <div>There has been a problem with your payment</div>}
           <div>:&#40;</div>
-          <button onClick={goBack}>Go back</button>
+          <button className="round-btns blue-btn" onClick={goBack}>
+            Go back
+          </button>
         </>
       ) : submitState === 'success' ? (
         <>
