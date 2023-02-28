@@ -1,77 +1,11 @@
-import "../Styles/TrasactionsTable.css";
-import TransactionEntry from "./TransactionEntry";
+import '../Styles/TrasactionsTable.css'
+import TransactionEntry from './TransactionEntry'
 
 const TransactionsTable = ({ transactions }) => {
-  // const mock = [
-  //   {
-  //     id: 1,
-  //     date: "12/12/12",
-  //     name: "Walkies",
-  //     seller: "Gucci",
-  //     amount: 123,
-  //     payMethod: 123456789,
-  //   },
-  //   {
-  //     id: 2,
-  //     date: "12/12/12",
-  //     name: "Walkies",
-  //     seller: "Gucci",
-  //     amount: 123,
-  //     payMethod: 123456789,
-  //   },
-  //   {
-  //     id: 3,
-  //     date: "12/12/12",
-  //     name: "Walkies",
-  //     seller: "Gucci",
-  //     amount: 123,
-  //     payMethod: 123456789,
-  //   },
-  //   {
-  //     id: 4,
-  //     date: "12/12/12",
-  //     name: "Walkies",
-  //     seller: "Gucci",
-  //     amount: 123,
-  //     payMethod: 123456789,
-  //   },
-  //   {
-  //     id: 5,
-  //     date: "12/12/12",
-  //     name: "Walkies",
-  //     seller: "Gucci",
-  //     amount: 123,
-  //     payMethod: 123456789,
-  //   },
-  //   {
-  //     id: 6,
-  //     date: "12/12/12",
-  //     name: "Walkies",
-  //     seller: "Gucci",
-  //     amount: 123,
-  //     payMethod: 123456789,
-  //   },
-  //   {
-  //     id: 7,
-  //     date: "12/12/12",
-  //     name: "Walkies",
-  //     seller: "Gucci",
-  //     amount: 123,
-  //     payMethod: 123456789,
-  //   },
-  //   {
-  //     id: 18,
-  //     date: "12/12/12",
-  //     name: "Walkies",
-  //     seller: "Gucci",
-  //     amount: 123,
-  //     payMethod: 123456789,
-  //   },
-  // ];
-  
+  // fix date_time to camelCase
   const formatDate = (date_time) => {
-    const date = new Date(date_time);
-    return date.toLocaleDateString();
+    const date = new Date(date_time)
+    return date.toLocaleDateString()
   }
 
   return (
@@ -94,7 +28,7 @@ const TransactionsTable = ({ transactions }) => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default TransactionsTable;
+export default TransactionsTable

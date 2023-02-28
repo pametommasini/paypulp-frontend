@@ -30,6 +30,13 @@
   grid-area: 3 / 9 / span 8 / span 4;
 }
 
+.dash-pay-method .dash-inner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+padding: 2rem 0 ;
+}
+
 @media (max-width: 1150px) {
   .dashboard {
     display: flex;
