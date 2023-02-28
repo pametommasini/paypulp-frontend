@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 /**
  * get width and height of current viewport
  * @returns {number, number}
  */
 function getWindowSize() {
-  const { innerWidth: width, innerHeight: height } = window;
+  const { innerWidth: width, innerHeight: height } = window
   return {
     width,
-    height
-  };
+    height,
+  }
 }
 
 /**
@@ -17,16 +17,16 @@ function getWindowSize() {
  * @returns {number, number}
  */
 export default function useWindowSize() {
-  const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [windowSize, setWindowSize] = useState(getWindowSize())
 
   useEffect(() => {
     function handleResize() {
-      setWindowSize(getWindowSize());
+      setWindowSize(getWindowSize())
     }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
-  return windowSize;
+  return windowSize
 }

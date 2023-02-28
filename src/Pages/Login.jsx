@@ -1,19 +1,19 @@
-import { useForm } from "react-hook-form";
-import { useLoaderData } from "react-router-dom";
-import LoginCard from "../Components/LoginCard";
-import useLogin from "../Hooks/useLogin";
-import "../Styles/Auth.css";
+import { useForm } from 'react-hook-form'
+import { useLoaderData } from 'react-router-dom'
+import LoginCard from '../Components/LoginCard'
+import useLogin from '../Hooks/useLogin'
+import '../Styles/Auth.css'
 
 const Login = ({ setIsAuth }) => {
-  const params = useLoaderData(); // get query params (if logging on gateway or main app)
+  const params = useLoaderData() // get query params (if logging on gateway or main app)
   const { loginError, onSubmit } = useLogin(params.isOnGateway, setIsAuth)
   const { register, handleSubmit } = useForm({
-    mode: "onTouched",
+    mode: 'onTouched',
     defaultValues: {
-      email: "masairl@mail.com",
-      password: "1234",
+      email: 'masairl@mail.com',
+      password: '1234',
     },
-  });
+  })
 
   return (
     <div className="auth">
@@ -27,7 +27,7 @@ const Login = ({ setIsAuth }) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
