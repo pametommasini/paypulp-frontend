@@ -26,7 +26,7 @@ const SignUp1 = ({ setPage, setAccountType }) => {
             Lets Get Personal!💋
           </button>
           <button
-            className="round-btns white-btn btn-on-main"
+            className="round-btns blue-outline-btn btn-on-main"
             onClick={() => startSignup('business')}>
             Lets Do Business😎
           </button>

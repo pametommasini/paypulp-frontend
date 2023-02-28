@@ -20,10 +20,9 @@ const CardImage = () => {
         <div className="card">
           <div className="card__top-info">
             <div>{userInfo?.cardType || 'bank'}</div>
-            <div>{userInfo?.cardName || 'name'}</div>
           </div>
           <div className="card__owner-info">
-            <div>{`${userInfo.firstName} ${userInfo.lastName}`}</div>
+            <div>{userInfo?.cardName || 'name'}</div>
             <div>{formatCardNumber()}</div>
           </div>
         </div>

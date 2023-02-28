@@ -13,7 +13,7 @@ const NavAuthBtns = ({ desktop, signOut }) => {
       ) : (
         <>
           <NavLink to="login">
-            <button className="round-btns blue-btn">Log In</button>
+            <button className="round-btns white-outline-btn">Log In</button>
           </NavLink>
           <NavLink to="signup">
             <button className="round-btns white-btn">Sign Up</button>
