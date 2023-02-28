@@ -6,7 +6,7 @@ import Submitting from '../Components/Submitting'
 import PaymentGateway from '../Services/PaymentGateway'
 import Logo from '../Assets/Paypulptr.png'
 import '../Styles/PaymentView.css'
-import Login from './Login'
+import Login from './Public/Login'
 import PaymentMethods from '../Services/PaymentMethods'
 
 const PaymentView = () => {

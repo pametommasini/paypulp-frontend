@@ -1,5 +1,5 @@
-// import photo from "../Assets/4._Developer.jpg";
-import '../Styles/Developer.css'
+import photo from '../../Assets/4._Developer.jpg'
+import '../../Styles/Developer.css'
 
 export default function Developer() {
   return (
@@ -12,13 +12,7 @@ export default function Developer() {
           Whether you&apos;re building an online, mobile or in-person payment solution, create a
           PayPulp Developer account and find the resources you need to test & go live.
         </p>
-        <img
-          className="photo"
-          width="600"
-          height="400"
-          src={require('../Assets/4._Developer.jpg')}
-          alt="Web developers at work"
-        />
+        <img className="photo" width="600" height="400" src={photo} alt="Web developers at work" />
       </div>
     </div>
   )

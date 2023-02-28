@@ -1,14 +1,14 @@
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import SignUp1 from '../Components/Signup/SignUp1'
-import SignUp2 from '../Components/Signup/SignUp2'
-import SignUp3 from '../Components/Signup/SignUp3'
-import SignUp4 from '../Components/Signup/SignUp4'
-import Submitting from '../Components/Submitting'
-import { userContext } from '../Context/UserContext'
-import Auth from '../Services/Auth'
-import '../Styles/Auth.css'
+import SignUp1 from '../../Components/Signup/SignUp1'
+import SignUp2 from '../../Components/Signup/SignUp2'
+import SignUp3 from '../../Components/Signup/SignUp3'
+import SignUp4 from '../../Components/Signup/SignUp4'
+import Submitting from '../../Components/Submitting'
+import { userContext } from '../../Context/UserContext'
+import Auth from '../../Services/Auth'
+import '../../Styles/Auth.css'
 
 export default function Signup() {
   const [page, setPage] = useState(1)
