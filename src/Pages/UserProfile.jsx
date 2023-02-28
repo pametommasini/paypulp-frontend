@@ -42,7 +42,6 @@ const UserProfile = () => {
   }, [])
 
   const onSubmit = (userData) => {
-    console.log(userData)
     try {
       const res = UserInfo.updateUserInfo(userData)
       console.log(res.data)
