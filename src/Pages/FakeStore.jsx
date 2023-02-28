@@ -1,3 +1,6 @@
+import DashboardCard from '../Components/DashboardCard'
+import '../Styles/FakeStore.css'
+
 const FakeStore = () => {
   const goToPayment = async () => {
     const sellerInfo = {
@@ -8,11 +11,36 @@ const FakeStore = () => {
     window.location.href = `http://localhost:3000/gateway/${sellerInfo.productUuid}?businessuuid=${sellerInfo.businessUuid}&redirecturl=${sellerInfo.redirectUrl}`
   }
 
+  const fakeItems = () => {
+    const itemsArr = []
+    const element = (
+      <DashboardCard className="fake-prod-card">
+        <div className="fake-inner-card">
+          <div>Manzanas</div>
+          <div>$100</div>
+          <button className="fake-btn" onClick={goToPayment}>
+            Buy
+          </button>
+        </div>
+      </DashboardCard>
+    )
+    for (let i = 0; i < 15; i++) {
+      itemsArr.push(element)
+    }
+    return itemsArr
+  }
+
   return (
-    <div>
-      <div>Product: xxx-xxx</div>
-      <button onClick={goToPayment}>Buy</button>
-    </div>
+    <>
+      <div className="fake-nav">
+        <h2>Logo</h2>
+        <div>Menu</div>
+      </div>
+      <div className="fake-main">
+        <h1 className="fake-title">!!! FAKE STORE !!!</h1>
+        <div className="fake-items-grid">{fakeItems()}</div>
+      </div>
+    </>
   )
 }
 
