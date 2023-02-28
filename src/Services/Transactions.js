@@ -5,7 +5,7 @@ class Transactions {
     return { headers: { Authorization: token } }
   }
 
-  static getTransactions = async (userUuid, amount) => {
+  static getTransactions = async (userUuid, amount = null) => {
     const token = localStorage.getItem('token')
     const config = Transactions.getConfig(token)
 

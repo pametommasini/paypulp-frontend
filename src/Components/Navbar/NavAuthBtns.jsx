@@ -6,14 +6,14 @@ const NavAuthBtns = ({ desktop, signOut }) => {
     <div className={`auth-btns-container ${desktop && 'btns-row'}`}>
       {localStorage.getItem('token') ? (
         <NavLink to="login">
-          <button className="round-btns blue-btn" onClick={signOut}>
+          <button className="round-btns white-outline-btn" onClick={signOut}>
             Sign Out
           </button>
         </NavLink>
       ) : (
         <>
           <NavLink to="login">
-            <button className="round-btns blue-btn">Log In</button>
+            <button className="round-btns white-outline-btn">Log In</button>
           </NavLink>
           <NavLink to="signup">
             <button className="round-btns white-btn">Sign Up</button>

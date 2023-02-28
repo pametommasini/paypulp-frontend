@@ -11,18 +11,18 @@ const TransactionsTable = ({ transactions }) => {
   return (
     <div className="transactions-table">
       <div className="transactions-column">
-        <div>Date</div>
-        <div>Product</div>
         <div>Seller</div>
+        <div>Product</div>
+        {/* <div>Seller</div> */}
         <div>Amount</div>
-        <div>Payment Method</div>
+        {/* <div>Payment Method</div> */}
       </div>
       {transactions.map((transaction) => (
         <TransactionEntry
           date={formatDate(transaction.date_time)}
           product={transaction.product_name}
           seller={transaction.business_name}
-          amount={transaction.total_amount}
+          total={transaction.total_amount}
           payMethod={transaction.card_number}
           key={transaction.transaction_id}
         />

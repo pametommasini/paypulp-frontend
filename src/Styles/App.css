@@ -49,7 +49,8 @@ main {
   max-width: 100vw;
   height: 100vh;
   background-color: var(--bg-dirty);
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 
@@ -58,7 +59,6 @@ main {
   font-size: 1.2rem;
   margin: 0.5rem 0;
   padding: 0.5rem .25rem;
-  border: 1px solid var(--font-secondary);
   border-radius: 1rem;
   transition: all 0.2s ease-in;
   cursor: pointer;
@@ -66,6 +66,7 @@ main {
 
 .round-btns:disabled {
   color: var(--mid);
+  border: 1px solid var(--mid);
 }
 
 .btn-on-main {
@@ -77,12 +78,28 @@ main {
   font-weight: 300;
   background-color: var(--bg-secondary);
   color: var(--font-secondary);
+  border: none;
+}
+
+.blue-outline-btn {
+  font-weight: 400;
+  background-color: #ffffff00;
+  color: var(--bg-secondary);
+  border: 1px solid var(--bg-secondary);
 }
 
 .white-btn {
   font-weight: 400;
   background-color: var(--bg-primary);
   color: var(--bg-secondary);
+  border: none;
+}
+
+.white-outline-btn {
+  font-weight: 300;
+  background-color: #ffffff00;
+  color: var(--bg-primary);
+  border: 1px solid var(--bg-primary);
 }
 
 .red-btn {
@@ -103,3 +120,4 @@ input {
 input:focus {
   outline: 2px solid var(--light-blue);
 }
+

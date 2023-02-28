@@ -17,7 +17,7 @@ const LoginCard = ({ register, handleSubmit, onSubmit, loginError }) => {
           Login
         </button>
       </div>
-      {loginError && <AuthError />}
+      {loginError === 401 && <AuthError />}
     </form>
   )
 }

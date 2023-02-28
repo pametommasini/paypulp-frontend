@@ -39,7 +39,7 @@ const SignUp3 = ({ register, setPage, errors, isValid }) => {
             Previous
           </button>
           <button
-            className="round-btns white-btn btn-on-main"
+            className="round-btns blue-outline-btn btn-on-main"
             onClick={() => setPage(4)}
             disabled={!isValid}>
             Next

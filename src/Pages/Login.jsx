@@ -1,3 +1,4 @@
+import { Alert, Button, Snackbar } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { useLoaderData } from 'react-router-dom'
 import LoginCard from '../Components/LoginCard'
@@ -6,7 +7,7 @@ import '../Styles/Auth.css'
 
 const Login = ({ setIsAuth }) => {
   const params = useLoaderData() // get query params (if logging on gateway or main app)
-  const { loginError, onSubmit } = useLogin(params.isOnGateway, setIsAuth)
+  const { loginError, setLoginError, onSubmit } = useLogin(params.isOnGateway, setIsAuth)
   const { register, handleSubmit } = useForm({
     mode: 'onTouched',
     defaultValues: {
@@ -26,6 +27,13 @@ const Login = ({ setIsAuth }) => {
           loginError={loginError}
         />
       </div>
+      <Snackbar
+        open={loginError === 'ERR_NETWORK'}
+        autoHideDuration={2000}
+        onClose={() => setLoginError(null)}
+        message="Note archived">
+        <Alert severity="warning">Make sure the server is running!</Alert>
+      </Snackbar>
     </div>
   )
 }

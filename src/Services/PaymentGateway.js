@@ -16,9 +16,6 @@ class Gateway {
     if (res.status === 200) {
       return res
     }
-    // } catch (error) {
-    //   console.log(error);
-    // }
   }
 
   static confirmPayment = async (transactionInfo) => {

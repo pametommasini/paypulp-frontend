@@ -18,22 +18,8 @@ export default function NavBar() {
   const { userInfo, setUserInfo } = useContext(userContext)
   const navigate = useNavigate()
 
-  // turn a string to hex color
-  // const stringToColor = (string) => {
-  //   let hash = 0
-  //   let i
-  //   for (i = 0; i < string.length; i += 1) {
-  //     hash = string.charCodeAt(i) + ((hash << 5) - hash)
-  //   }
-  //   let color = '#'
-  //   for (i = 0; i < 3; i += 1) {
-  //     const value = (hash >> (i * 8)) & 0xff
-  //     color += `00${value.toString(16)}`.slice(-2)
-  //   }
-  //   return color
-  // }
-
   const signOut = () => {
+    console.log('signout')
     localStorage.clear()
     setUserInfo({})
     navigate('')
@@ -55,15 +41,11 @@ export default function NavBar() {
           {width > 1000 ? (
             <>
               <NavLinks width={width} accountType={userInfo.accountType} />
-
               {!localStorage.getItem('token') ? (
                 <NavAuthBtns signOut={signOut} desktop={true} />
               ) : (
                 <div className="nav-avatar-wrapper">
-                  <Avatar
-                    className="nav-avatar"
-                    // sx={userInfo && { bgcolor: stringToColor(userInfo.email) }}
-                    onClick={() => setShowMenu(true)}></Avatar>
+                  <Avatar className="nav-avatar" onClick={() => setShowMenu(true)} />
                   <button
                     className={`round-btns blue-btn desktop-dropdown ${showMenu && 'visible'}`}
                     onClick={signOut}>
@@ -83,16 +65,16 @@ export default function NavBar() {
               ) : (
                 <>
                   <div className="nav-avatar-wrapper">
-                    <Avatar
-                      className="nav-avatar"
-                      // sx={userInfo && { bgcolor: stringToColor(userInfo.email) }}
-                      onClick={() => setShowMenu(true)}>
-                      {/* {userInfo?.firstName[0].toUpperCase()} */}
-                    </Avatar>
+                    <Avatar className="nav-avatar" onClick={() => setShowMenu(true)} />
                   </div>
                 </>
               )}
-              <NavMenu showMenu={showMenu} width={width} accountType={userInfo.accountType} />
+              <NavMenu
+                showMenu={showMenu}
+                width={width}
+                signOut={signOut}
+                accountType={userInfo.accountType}
+              />
             </>
           )}
         </nav>
