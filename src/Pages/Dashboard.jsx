@@ -1,22 +1,12 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import CardImage from '../Components/CardImage'
 import DashboardCard from '../Components/DashboardCard'
 import TransactionsTable from '../Components/TransactionsTable'
 import { userContext } from '../Context/UserContext'
-import Transactions from '../Services/Transactions'
 import '../Styles/Dashboard.css'
 
 const Dashboard = () => {
-  const { userInfo, transactions, setTransactions } = useContext(userContext)
-
-  useEffect(() => {
-    const getTransactions = async () => {
-      const res = await Transactions.getTransactions(userInfo.userUuid, 10)
-      if (res.status === 200) setTransactions(res.data)
-    }
-    getTransactions()
-  }, [userInfo])
-
+  const { userInfo, transactions } = useContext(userContext)
   return (
     <section className="dashboard">
       <div className="dash-title-wrapper">
