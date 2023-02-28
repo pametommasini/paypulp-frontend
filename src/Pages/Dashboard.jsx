@@ -3,10 +3,14 @@ import CardImage from '../Components/Dashboard/CardImage'
 import DashboardCard from '../Components/Dashboard/DashboardCard'
 import TransactionsTable from '../Components/Transactions/TransactionsTable'
 import { userContext } from '../Context/UserContext'
+import useGetTransactions from '../Hooks/useGetTransactions'
+
 import '../Styles/Dashboard.css'
 
 const Dashboard = () => {
-  const { userInfo, transactions } = useContext(userContext)
+  const { userInfo /* transactions */ } = useContext(userContext)
+  const { transactions } = useGetTransactions()
+  // why when returning context from hook renders fine but accesing context directly doesn't ????
   return (
     <section className="dashboard">
       <div className="dash-title-wrapper">
@@ -20,7 +24,7 @@ const Dashboard = () => {
         )}
       </DashboardCard>
       <DashboardCard className="dash-pay-method" title="Main Payment Method">
-        <CardImage />
+        {<CardImage />}
       </DashboardCard>
     </section>
   )
