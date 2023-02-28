@@ -1,5 +1,6 @@
 import { Container, Paper } from '@mui/material'
 import Gateway from '../Services/PaymentGateway'
+import CardImage from './CardImage'
 
 const ConfirmPurchase = ({ product, userInfo, setSubmitState }) => {
   const confirmPayment = async () => {
@@ -20,17 +21,17 @@ const ConfirmPurchase = ({ product, userInfo, setSubmitState }) => {
       if (res.status === 201) setSubmitState('success')
     } catch (error) {
       setSubmitState('error')
-      console.log(error)
+      console.error(error)
     }
   }
 
   return (
     <Container className="container">
       <Paper className="pay-info-container" elevation={3}>
-        <div>
-          <div>You are purchasing</div>
-          <div>{product?.product_name}</div>
+        <h2>You&apos;re purschasing: {product?.product_name}</h2>
+        <div className="pay-info">
           <div>with payment method:</div>
+          <CardImage />
           <div>{userInfo?.paymentMethod}</div>
           <div>Amount: {product?.price}</div>
         </div>

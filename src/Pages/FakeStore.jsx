@@ -13,19 +13,21 @@ const FakeStore = () => {
 
   const fakeItems = () => {
     const itemsArr = []
-    const element = (
-      <DashboardCard className="fake-prod-card">
-        <div className="fake-inner-card">
-          <div>Manzanas</div>
-          <div>$100</div>
-          <button className="fake-btn" onClick={goToPayment}>
-            Buy
-          </button>
-        </div>
-      </DashboardCard>
-    )
+    const element = (key) => {
+      return (
+        <DashboardCard className="fake-prod-card" key={key}>
+          <div className="fake-inner-card">
+            <div>Manzanas</div>
+            <div>$100</div>
+            <button className="fake-btn" onClick={goToPayment}>
+              Buy
+            </button>
+          </div>
+        </DashboardCard>
+      )
+    }
     for (let i = 0; i < 15; i++) {
-      itemsArr.push(element)
+      itemsArr.push(element(i))
     }
     return itemsArr
   }

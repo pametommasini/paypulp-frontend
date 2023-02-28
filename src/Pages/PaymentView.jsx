@@ -1,20 +1,21 @@
 import { useContext, useEffect, useState } from 'react'
 import { useLoaderData, useSearchParams } from 'react-router-dom'
-import Logo from '../Assets/Paypulptr.png'
+import { userContext } from '../Context/UserContext'
 import ConfirmPurchase from '../Components/ConfirmPurchase'
 import Submitting from '../Components/Submitting'
 import PaymentGateway from '../Services/PaymentGateway'
+import Logo from '../Assets/Paypulptr.png'
 import '../Styles/PaymentView.css'
 import Login from './Login'
-import { userContext } from '../Context/UserContext'
+import PaymentMethods from '../Services/PaymentMethods'
 
 const PaymentView = () => {
-  const [isAuth, setIsAuth] = useState(false)
-  const [product, setProduct] = useState(null)
   const { userInfo } = useContext(userContext)
-  const [submitState, setSubmitState] = useState(null)
   const { productUuid } = useLoaderData()
   const [searchParams] = useSearchParams()
+  const [isAuth, setIsAuth] = useState(false)
+  const [product, setProduct] = useState(null)
+  const [submitState, setSubmitState] = useState(null)
 
   useEffect(() => {
     if (isAuth && submitState === null) {
@@ -23,6 +24,12 @@ const PaymentView = () => {
         setProduct(res.data[0])
       }
       getProduct()
+      // const getDefaultPaymentMethod = async () => {
+      //   const res = await PaymentMethods.getDefaultPaymentMethod(userInfo.userUuid)
+      //   console.log(product, res.data)
+      //   // setProduct(prod => {...prod, res.data})
+      // }
+      // getDefaultPaymentMethod()
     }
     if (submitState === 'success') {
       setTimeout(goBack, 4000)
