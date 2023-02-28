@@ -1,7 +1,6 @@
 import Input from '../Elements/Input'
 
 const SignUp3 = ({ register, setPage, errors, isValid }) => {
-  console.log(isValid)
   return (
     <>
       <section className="auth-card">
