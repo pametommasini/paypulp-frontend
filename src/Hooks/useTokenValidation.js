@@ -4,7 +4,7 @@ import { userContext } from 'Context/UserContext'
 import UserInfo from 'Services/User'
 
 export default function useTokenValidation() {
-  const { userInfo, setUserInfo, setPaymentMethods } = useContext(userContext)
+  const { userInfo, setUserInfo, setTransactions, setPaymentMethods } = useContext(userContext)
   const navigate = useNavigate()
   const [tokenError, setTokenError] = useState(false)
 
@@ -19,6 +19,10 @@ export default function useTokenValidation() {
         } catch (error) {
           console.error(error)
           localStorage.clear()
+          setUserInfo({})
+          setTransactions([])
+          setPaymentMethods([])
+          setTokenError(true)
           navigate('/login')
         }
       }

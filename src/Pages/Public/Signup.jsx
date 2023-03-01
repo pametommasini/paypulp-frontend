@@ -1,20 +1,20 @@
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import SignUp1 from '../../Components/Signup/SignUp1'
-import SignUp2 from '../../Components/Signup/SignUp2'
-import SignUp3 from '../../Components/Signup/SignUp3'
-import SignUp4 from '../../Components/Signup/SignUp4'
-import Submitting from '../../Components/Submitting'
-import { userContext } from '../../Context/UserContext'
-import Auth from '../../Services/Auth'
-import '../../Styles/Auth.css'
+import SignUp1 from 'Components/Signup/SignUp1'
+import SignUp2 from 'Components/Signup/SignUp2'
+import SignUp3 from 'Components/Signup/SignUp3'
+import SignUp4 from 'Components/Signup/SignUp4'
+import Submitting from 'Components/Submitting'
+import { userContext } from 'Context/UserContext'
+import Auth from 'Services/Auth'
+import 'Styles/Auth.css'
 
 export default function Signup() {
   const [page, setPage] = useState(1)
   const [accountType, setAccountType] = useState(null)
   const [submitting, setSubmitting] = useState(null)
-  const { setUserInfo } = useContext(userContext)
+  const { setUserInfo, setTransactions, setPaymentMethods } = useContext(userContext)
   const navigate = useNavigate()
   /**
    * react-hook-form
@@ -64,8 +64,10 @@ export default function Signup() {
     try {
       const res = await Auth.signup(userData)
       if (res.statusText === 'OK') {
-        const redirect = () => navigate('/dashboard')
         const success = () => {
+          setTransactions([])
+          setPaymentMethods([])
+          const redirect = () => navigate('/dashboard')
           setSubmitting('success')
           const newUserInfo = {
             ...res.data.userInfo,
@@ -73,7 +75,7 @@ export default function Signup() {
           }
           localStorage.setItem('token', res.data.token)
           setUserInfo(newUserInfo)
-          setTimeout(redirect, 3000)
+          setTimeout(redirect, 2000)
         }
         success()
       }
