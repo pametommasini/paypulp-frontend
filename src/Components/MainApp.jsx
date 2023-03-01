@@ -15,7 +15,7 @@ const MainApp = () => {
         autoHideDuration={2000}
         onClose={() => setTokenError(false)}
         message="Note archived">
-        <Alert severity="warning">Make sure the server is running!</Alert>
+        <Alert severity="warning">Token validation error</Alert>
       </Snackbar>
     </main>
   )

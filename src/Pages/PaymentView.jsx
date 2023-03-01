@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
 import { useLoaderData, useSearchParams } from 'react-router-dom'
-import { userContext } from '../Context/UserContext'
-import ConfirmPurchase from '../Components/ConfirmPurchase'
-import Submitting from '../Components/Submitting'
-import PaymentGateway from '../Services/PaymentGateway'
-import Logo from '../Assets/Paypulptr.png'
-import '../Styles/PaymentView.css'
-import Login from './Public/Login'
+import { userContext } from 'Context/UserContext'
+import ConfirmPurchase from 'Components/ConfirmPurchase'
+import Submitting from 'Components/Submitting'
+import PaymentGateway from 'Services/PaymentGateway'
+import Logo from 'Assets/Paypulptr.png'
+import 'Styles/PaymentView.css'
+import Login from 'Pages/Public/Login'
 
 const PaymentView = () => {
   const { userInfo, paymentMethods } = useContext(userContext)
@@ -49,13 +49,17 @@ const PaymentView = () => {
           setSubmitState={setSubmitState}
         />
       )}
-      {submitState && <Submitting submitState={submitState} goBack={goBack} location="gateway" />}
-      {submitState === 'success' && (
-        <>
-          <div>If you&apos;re not redirected after 4 seconds click here:</div>
-          <button onClick={goBack}>Leave this place</button>
-        </>
-      )}
+      <div className="submit-state-message">
+        {submitState && <Submitting submitState={submitState} goBack={goBack} location="gateway" />}
+        {submitState === 'success' && (
+          <div className="submit-redirect-message">
+            <div>If you&apos;re not redirected after 4 seconds click here:</div>
+            <button className="round-btns blue-outline-btn" onClick={goBack}>
+              Leave this place
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
