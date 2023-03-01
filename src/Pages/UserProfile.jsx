@@ -40,7 +40,6 @@ const UserProfile = () => {
     }
     getUserInfo()
   }, [])
-
   const onSubmit = (userData) => {
     try {
       const res = UserInfo.updateUserInfo(userData)

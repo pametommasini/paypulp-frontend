@@ -16,14 +16,14 @@ const Dashboard = () => {
         <h2 className="dash-title">Welcome, {userInfo?.firstName}</h2>
       </div>
       <DashboardCard className="dash-transactions" title="Recent Transactions">
-        {transactions.length > 0 ? (
-          <TransactionsTable transactions={transactions} />
-        ) : (
-          <h2>You have no transactions yet</h2>
-        )}
+        <TransactionsTable transactions={transactions} />
       </DashboardCard>
       <DashboardCard className="dash-pay-method" title="Main Payment Method">
-        {<CardImage />}
+        {userInfo.payMethodUuid ? (
+          <CardImage />
+        ) : (
+          <h2 className="dash-empty-msg">Please select a default payment method</h2>
+        )}
       </DashboardCard>
     </section>
   )

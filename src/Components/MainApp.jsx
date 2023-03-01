@@ -15,6 +15,7 @@ const MainApp = () => {
         try {
           const res = await UserInfo.getUserInfo()
           setUserInfo(res.data)
+          console.log(res)
         } catch (error) {
           console.error(error.response.data)
           localStorage.clear()

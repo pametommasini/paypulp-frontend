@@ -10,7 +10,6 @@ export default function useGetTransactions() {
       const transactionsReq = async () => {
         const res = await Transactions.getTransactions()
         setTransactions(res.data)
-        console.log(res)
       }
       transactionsReq()
     }

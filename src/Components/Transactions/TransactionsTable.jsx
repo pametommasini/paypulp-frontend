@@ -17,16 +17,20 @@ const TransactionsTable = ({ transactions }) => {
         <div>Amount</div>
         {/* <div>Payment Method</div> */}
       </div>
-      {transactions.map((transaction) => (
-        <TransactionEntry
-          date={formatDate(transaction.date_time)}
-          product={transaction.product_name}
-          seller={transaction.business_name}
-          total={transaction.total_amount}
-          payMethod={transaction.card_number}
-          key={transaction.transaction_id}
-        />
-      ))}
+      {transactions.length > 0 ? (
+        transactions.map((transaction) => (
+          <TransactionEntry
+            date={formatDate(transaction.date_time)}
+            product={transaction.product_name}
+            seller={transaction.business_name}
+            total={transaction.total_amount}
+            payMethod={transaction.card_number}
+            key={transaction.transaction_id}
+          />
+        ))
+      ) : (
+        <h2 className='dash-empty-msg'>You have no transactions yet</h2>
+      )}
     </div>
   )
 }
