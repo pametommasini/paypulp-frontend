@@ -45,12 +45,15 @@ export default function NavBar() {
                 <NavAuthBtns signOut={signOut} desktop={true} />
               ) : (
                 <div className="nav-avatar-wrapper">
-                  <Avatar className="nav-avatar" onClick={() => setShowMenu(true)} />
-                  <button
-                    className={`round-btns blue-btn desktop-dropdown ${showMenu && 'visible'}`}
-                    onClick={signOut}>
-                    Sign Out
-                  </button>
+                  {showMenu ? (
+                    <Avatar className="nav-avatar" onClick={() => setShowMenu(true)} />
+                  ) : (
+                    <button
+                      className={`round-btns white-outline-btn ${showMenu && 'visible'}`}
+                      onClick={signOut}>
+                      Sign Out
+                    </button>
+                  )}
                 </div>
               )}
             </>

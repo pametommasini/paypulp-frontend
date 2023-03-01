@@ -25,6 +25,7 @@ const PaymentView = () => {
       }
       getProduct()
     }
+
     if (submitState === 'success') {
       setInterval(() => {
         setRedirTime((time) => time - 1)
