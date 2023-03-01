@@ -18,7 +18,7 @@ const MainApp = () => {
         } catch (error) {
           console.error(error.response.data)
           localStorage.clear()
-          navigate('/')
+          navigate('/login')
         }
       }
       getUserInfo()
