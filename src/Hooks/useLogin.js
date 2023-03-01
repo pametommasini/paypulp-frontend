@@ -11,7 +11,7 @@ import Transactions from '../Services/Transactions'
  * @returns {boolean, function}
  */
 export default function useLogin(isOnGateway, setIsAuth) {
-  const { setUserInfo, setTransactions } = useContext(userContext)
+  const { setUserInfo, setTransactions, setPaymentMethods } = useContext(userContext)
   const [loginError, setLoginError] = useState(null)
   const navigate = useNavigate()
 
@@ -29,6 +29,7 @@ export default function useLogin(isOnGateway, setIsAuth) {
         userUuid = resLogin.data.userInfo.userUuid
         localStorage.setItem('token', resLogin.data.token)
         setUserInfo(resLogin.data.userInfo)
+        setPaymentMethods(resLogin.data.paymentMethods)
         if (isOnGateway) {
           setIsAuth(true)
           return

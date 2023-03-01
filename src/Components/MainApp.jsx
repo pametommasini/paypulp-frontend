@@ -5,7 +5,7 @@ import UserInfo from '../Services/User'
 import NavBar from './Navbar/NavBar'
 
 const MainApp = () => {
-  const { userInfo, setUserInfo } = useContext(userContext)
+  const { userInfo, setUserInfo, setPaymentMethods } = useContext(userContext)
   const navigate = useNavigate()
 
   // if token is active, get customer info
@@ -14,9 +14,10 @@ const MainApp = () => {
       const getUserInfo = async () => {
         try {
           const res = await UserInfo.getUserInfo()
-          setUserInfo(res.data)
+          setUserInfo(res.data.userInfo)
+          setPaymentMethods(res.data.paymentMethods)
         } catch (error) {
-          console.error(error.response.data)
+          console.error(error)
           localStorage.clear()
           navigate('/login')
         }

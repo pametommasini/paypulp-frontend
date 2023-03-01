@@ -7,7 +7,7 @@ import useGetTransactions from 'Hooks/useGetTransactions'
 import 'Styles/Dashboard.css'
 
 const Dashboard = () => {
-  const { userInfo /* transactions */ } = useContext(userContext)
+  const { userInfo, paymentMethods /* transactions */ } = useContext(userContext)
   const { transactions } = useGetTransactions()
   // why when returning context from hook renders fine but accesing context directly doesn't ????
   return (
@@ -19,7 +19,7 @@ const Dashboard = () => {
         <TransactionsTable transactions={transactions} />
       </DashboardCard>
       <DashboardCard className="dash-pay-method" title="Main Payment Method">
-        {userInfo.payMethodUuid ? (
+        {paymentMethods.length > 0 ? (
           <CardImage />
         ) : (
           <h2 className="dash-empty-msg">Please select a default payment method</h2>

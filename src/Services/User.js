@@ -5,7 +5,7 @@ class UserInfo {
     return { headers: { Authorization: token } }
   }
 
-  static getUserInfo = async (userData) => {
+  static getUserInfo = async () => {
     const token = localStorage.getItem('token')
     const config = UserInfo.getConfig(token)
     const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/private/user/userdata`, config)
