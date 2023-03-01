@@ -1,5 +1,5 @@
-import '../../Styles/TrasactionsTable.css'
 import TransactionEntry from './TransactionEntry'
+import 'Styles/TrasactionsTable.css'
 
 const TransactionsTable = ({ transactions }) => {
   // fix date_time to camelCase
@@ -13,9 +13,7 @@ const TransactionsTable = ({ transactions }) => {
       <div className="transactions-column">
         <div>Seller</div>
         <div>Product</div>
-        {/* <div>Seller</div> */}
         <div>Amount</div>
-        {/* <div>Payment Method</div> */}
       </div>
       {transactions.length > 0 ? (
         transactions.map((transaction) => (
@@ -29,7 +27,7 @@ const TransactionsTable = ({ transactions }) => {
           />
         ))
       ) : (
-        <h2 className='dash-empty-msg'>You have no transactions yet</h2>
+        <h2 className="dash-empty-msg">You have no transactions yet</h2>
       )}
     </div>
   )

@@ -1,26 +1,27 @@
-import MenuOpenIcon from '@mui/icons-material/MenuOpen'
-import { Avatar, ClickAwayListener } from '@mui/material'
 import { useContext, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import Logo from '../../Assets/Paypulptr.png'
-import { userContext } from '../../Context/UserContext'
-import useWindowSize from '../../Hooks/useWindowSize.js'
-import '../../Styles/NavBar.css'
+import MenuOpenIcon from '@mui/icons-material/MenuOpen'
+import { Avatar, ClickAwayListener } from '@mui/material'
+import { userContext } from 'Context/UserContext'
+import useWindowSize from 'Hooks/useWindowSize.js'
 import NavAuthBtns from './NavAuthBtns'
 import NavLinks from './NavLinks'
 import NavMenu from './NavMenu'
+import Logo from 'Assets/Paypulptr.png'
+import 'Styles/NavBar.css'
 
 export default function NavBar() {
   // toggle mobile menu
   const [showMenu, setShowMenu] = useState(false)
   // get viewport width
   const { width } = useWindowSize()
-  const { userInfo, setUserInfo } = useContext(userContext)
+  const { userInfo, setUserInfo, setTransactions } = useContext(userContext)
   const navigate = useNavigate()
 
   const signOut = () => {
     localStorage.clear()
     setUserInfo({})
+    setTransactions([])
     navigate('')
   }
 

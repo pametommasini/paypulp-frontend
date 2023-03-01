@@ -27,7 +27,7 @@
 
 .card__top-info {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .card__owner-info {
   display: flex;
