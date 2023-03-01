@@ -15,6 +15,7 @@ const PaymentView = () => {
   const [isAuth, setIsAuth] = useState(false)
   const [product, setProduct] = useState(null)
   const [submitState, setSubmitState] = useState(null)
+  const [redirTime, setRedirTime] = useState(4)
 
   useEffect(() => {
     if (isAuth && submitState === null) {
@@ -25,6 +26,9 @@ const PaymentView = () => {
       getProduct()
     }
     if (submitState === 'success') {
+      setInterval(() => {
+        setRedirTime((time) => time - 1)
+      }, 1000)
       setTimeout(goBack, 4000)
     }
   }, [isAuth, submitState])
@@ -53,7 +57,7 @@ const PaymentView = () => {
         {submitState && <Submitting submitState={submitState} goBack={goBack} location="gateway" />}
         {submitState === 'success' && (
           <div className="submit-redirect-message">
-            <div>If you&apos;re not redirected after 4 seconds click here:</div>
+            <div>If you&apos;re not redirected after {redirTime} seconds click here:</div>
             <button className="round-btns blue-outline-btn" onClick={goBack}>
               Leave this place
             </button>
