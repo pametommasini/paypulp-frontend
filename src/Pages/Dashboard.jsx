@@ -1,11 +1,10 @@
 import { useContext } from 'react'
-import CardImage from '../Components/Dashboard/CardImage'
-import DashboardCard from '../Components/Dashboard/DashboardCard'
-import TransactionsTable from '../Components/Transactions/TransactionsTable'
-import { userContext } from '../Context/UserContext'
-import useGetTransactions from '../Hooks/useGetTransactions'
-
-import '../Styles/Dashboard.css'
+import CardImage from 'Components/Dashboard/CardImage'
+import DashboardCard from 'Components/Dashboard/DashboardCard'
+import TransactionsTable from 'Components/Transactions/TransactionsTable'
+import { userContext } from 'Context/UserContext'
+import useGetTransactions from 'Hooks/useGetTransactions'
+import 'Styles/Dashboard.css'
 
 const Dashboard = () => {
   const { userInfo /* transactions */ } = useContext(userContext)

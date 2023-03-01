@@ -24,4 +24,12 @@ module.exports = {
     'react/prop-types': 0,
     'prettier/prettier': 'warn',
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.d.ts', '.ts', '.tsx'],
+        moduleDirectory: ['node_modules', 'src'],
+      },
+    },
+  },
 }
