@@ -83,7 +83,7 @@ export default function Signup() {
       // setTimeout(success, 3000);
     } catch (error) {
       setSubmitting('error')
-      console.log(error)
+      console.error(error)
     }
   }
 

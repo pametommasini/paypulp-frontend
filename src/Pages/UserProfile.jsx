@@ -27,8 +27,7 @@ const UserProfile = () => {
 
   const onSubmit = (userData) => {
     try {
-      const res = UserInfo.updateUserInfo(userData)
-      console.log(res.data)
+      UserInfo.updateUserInfo(userData)
     } catch (error) {
       console.error('🥳SURPRISE!', error)
     }

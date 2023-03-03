@@ -1,4 +1,4 @@
-import '../Styles/Submitting.css'
+import 'Styles/Submitting.css'
 
 const Submitting = ({ submitState, location, goBack }) => {
   return (

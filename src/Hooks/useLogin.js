@@ -44,7 +44,7 @@ export default function useLogin(isOnGateway, setIsAuth) {
       const resTransactions = await Transactions.getTransactions(userUuid)
       if (resTransactions.status === 200) setTransactions(resTransactions.data)
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
     navigate('/dashboard')
   }
