@@ -2,7 +2,9 @@ import { Container, Paper } from '@mui/material'
 import Gateway from '../Services/PaymentGateway'
 import CardImage from './Dashboard/CardImage'
 
-const ConfirmPurchase = ({ product, userInfo, setSubmitState }) => {
+const ConfirmPurchase = ({ product, userInfo, paymentMethods, setSubmitState }) => {
+  const preferredPayMethod = paymentMethods.find((payMethod) => payMethod.isPreferred === true)
+
   const confirmPayment = async () => {
     setSubmitState('waiting')
     try {
@@ -12,7 +14,7 @@ const ConfirmPurchase = ({ product, userInfo, setSubmitState }) => {
         personalId: userInfo.personalId,
         productUuid: product.product_uuid,
         userUuid: userInfo.userUuid,
-        payMethodUuid: userInfo.payMethodUuid,
+        payMethodUuid: preferredPayMethod.payMethodUuid,
         totalAmount: product.price,
         dateTime: transactionTime,
         wentThrough: true,

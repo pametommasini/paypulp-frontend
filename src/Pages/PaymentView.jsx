@@ -1,21 +1,21 @@
 import { useContext, useEffect, useState } from 'react'
 import { useLoaderData, useSearchParams } from 'react-router-dom'
-import { userContext } from '../Context/UserContext'
-import ConfirmPurchase from '../Components/ConfirmPurchase'
-import Submitting from '../Components/Submitting'
-import PaymentGateway from '../Services/PaymentGateway'
-import Logo from '../Assets/Paypulptr.png'
-import '../Styles/PaymentView.css'
-import Login from './Login'
-import PaymentMethods from '../Services/PaymentMethods'
+import { userContext } from 'Context/UserContext'
+import ConfirmPurchase from 'Components/ConfirmPurchase'
+import Submitting from 'Components/Submitting'
+import PaymentGateway from 'Services/PaymentGateway'
+import Logo from 'Assets/Paypulptr.png'
+import 'Styles/PaymentView.css'
+import Login from 'Pages/Public/Login'
 
 const PaymentView = () => {
-  const { userInfo } = useContext(userContext)
+  const { userInfo, paymentMethods } = useContext(userContext)
   const { productUuid } = useLoaderData()
   const [searchParams] = useSearchParams()
   const [isAuth, setIsAuth] = useState(false)
   const [product, setProduct] = useState(null)
   const [submitState, setSubmitState] = useState(null)
+  const [redirTime, setRedirTime] = useState(4)
 
   useEffect(() => {
     if (isAuth && submitState === null) {
@@ -24,14 +24,12 @@ const PaymentView = () => {
         setProduct(res.data[0])
       }
       getProduct()
-      // const getDefaultPaymentMethod = async () => {
-      //   const res = await PaymentMethods.getDefaultPaymentMethod(userInfo.userUuid)
-      //   console.log(product, res.data)
-      //   // setProduct(prod => {...prod, res.data})
-      // }
-      // getDefaultPaymentMethod()
     }
+
     if (submitState === 'success') {
+      setInterval(() => {
+        setRedirTime((time) => time - 1)
+      }, 1000)
       setTimeout(goBack, 4000)
     }
   }, [isAuth, submitState])
@@ -49,15 +47,24 @@ const PaymentView = () => {
       </div>
       {!isAuth && !submitState && <Login setIsAuth={setIsAuth} />}
       {isAuth && !submitState && (
-        <ConfirmPurchase product={product} userInfo={userInfo} setSubmitState={setSubmitState} />
+        <ConfirmPurchase
+          product={product}
+          userInfo={userInfo}
+          paymentMethods={paymentMethods}
+          setSubmitState={setSubmitState}
+        />
       )}
-      {submitState && <Submitting submitState={submitState} goBack={goBack} location="gateway" />}
-      {submitState === 'success' && (
-        <>
-          <div>If you&apos;re not redirected after 4 seconds click here:</div>
-          <button onClick={goBack}>Leave this place</button>
-        </>
-      )}
+      <div className="submit-state-message">
+        {submitState && <Submitting submitState={submitState} goBack={goBack} location="gateway" />}
+        {submitState === 'success' && (
+          <div className="submit-redirect-message">
+            <div>If you&apos;re not redirected after {redirTime} seconds click here:</div>
+            <button className="round-btns blue-outline-btn" onClick={goBack}>
+              Leave this place
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

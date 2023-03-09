@@ -4,7 +4,7 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
   height: 100%;
-  width:100%;
+  width: 100%;
   max-width: 1400px;
   padding: 0 2rem;
   margin: 1rem auto;
@@ -27,14 +27,22 @@
 }
 
 .dash-pay-method {
-  grid-area: 3 / 9 / span 8 / span 4;
+  grid-area: 3 / 9 / span 4 / span 4;
 }
 
 .dash-pay-method .dash-inner-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-padding: 2rem 0 ;
+  padding: 2rem 0;
+}
+
+.dash-empty-msg {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 
 @media (max-width: 1150px) {

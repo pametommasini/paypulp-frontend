@@ -1,5 +1,5 @@
 import { Avatar } from '@mui/material'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import DashboardCard from '../Components/Dashboard/DashboardCard'
 import CustomerInfo from '../Components/Profile/CustomerInfo'
@@ -9,7 +9,7 @@ import UserInfo from '../Services/User'
 import '../Styles/UserProfile.css'
 
 const UserProfile = () => {
-  const { userInfo, setUserInfo } = useContext(userContext)
+  const { userInfo } = useContext(userContext)
   const {
     register,
     handleSubmit,
@@ -22,29 +22,12 @@ const UserProfile = () => {
       city: userInfo.city,
       country: userInfo.country,
       birthDate: Dates.formatDateYMD(userInfo.birthDate),
-      // securityQuestion: "Who is Robert?",
-      // securityQuestionAnswer: "Who wants to",
     },
   })
 
-  useEffect(() => {
-    const getUserInfo = async () => {
-      try {
-        const res = await UserInfo.getUserInfo()
-        setUserInfo(res.data)
-      } catch (error) {
-        console.error(error.response.data)
-        // localStorage.clear();
-        // navigate("/");
-      }
-    }
-    getUserInfo()
-  }, [])
-
   const onSubmit = (userData) => {
     try {
-      const res = UserInfo.updateUserInfo(userData)
-      console.log(res.data)
+      UserInfo.updateUserInfo(userData)
     } catch (error) {
       console.error('🥳SURPRISE!', error)
     }

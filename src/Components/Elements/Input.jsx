@@ -76,12 +76,19 @@ const Input = ({ register, errors, type, name, label, readOnly = false, watch = 
       pattern: { value: /^\d+$/, message: 'Not a valid phone format' },
     },
   }
+
+  const getInputType = (inputType) => {
+    if (inputType === 'date') return 'date'
+    if (inputType === 'password' || inputType === 'confirmPassword') return 'password'
+    return 'text'
+  }
+
   return (
     <div className="input-wrapper">
       <label htmlFor={name}>{label}</label>
       <input
         className={`text-input ${errors[name] && 'input-error'}`}
-        type={type === 'date' ? 'date' : 'text'}
+        type={getInputType(type)}
         {...register(name, validation[type])}
         readOnly={readOnly}
       />

@@ -1,5 +1,5 @@
-import '../Styles/HomeAndInfo.css'
-import Photo from '../Assets/1._HOME.png'
+import Photo from '../../Assets/1._HOME.png'
+import '../../Styles/HomeAndInfo.css'
 
 export default function Home() {
   return (
