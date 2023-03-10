@@ -19,4 +19,8 @@ export default class Dates {
     const date = new Date(dateString).toLocaleDateString()
     return date.toLocaleString()
   }
+  
+  static getTimezone = () => {
+    return (new Date().getTimezoneOffset() / 60) * -1
+  }
 }

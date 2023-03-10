@@ -1,6 +1,6 @@
 import Input from '../Elements/Input'
 
-const SignUp4 = ({ register, setPage, errors, isValid }) => {
+const SignUp4 = ({ register, setPage, errors, isValid, accountType }) => {
   return (
     <>
       <Input
@@ -22,12 +22,22 @@ const SignUp4 = ({ register, setPage, errors, isValid }) => {
         <button className="round-btns blue-btn btn-on-main" onClick={() => setPage(3)}>
           Previous
         </button>
-        <button
-          className="round-btns blue-outline-btn btn-on-main"
-          type="submit"
-          disabled={!isValid}>
-          Send
-        </button>
+        {accountType === 'personal' && (
+          <button
+            className="round-btns blue-outline-btn btn-on-main"
+            type="submit"
+            disabled={!isValid}>
+            Send
+          </button>
+        )}
+        {accountType === 'business' && (
+          <button
+            className="round-btns blue-outline-btn btn-on-main"
+            onClick={() => setPage(5)}
+            disabled={!isValid}>
+            Next
+          </button>
+        )}
       </div>
     </>
   )
