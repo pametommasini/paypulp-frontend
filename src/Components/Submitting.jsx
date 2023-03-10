@@ -1,6 +1,6 @@
 import 'Styles/Submitting.css'
 
-const Submitting = ({ submitState, location, goBack }) => {
+const Submitting = ({ submitState, location, goBack, errorMessage }) => {
   return (
     <div className="submitting">
       {submitState === 'waiting' ? (
@@ -14,7 +14,11 @@ const Submitting = ({ submitState, location, goBack }) => {
       ) : submitState === 'error' ? (
         <>
           <div>We&apos;re sorry</div>
-          {location === 'signup' && <div>There has been a problem with your submission</div>}
+          {location === 'signup' ? (
+            errorMessage && <div>{errorMessage}</div>
+          ) : (
+            <div>There has been a problem with your submission</div>
+          )}
           {location === 'gateway' && <div>There has been a problem with your payment</div>}
           <div>:&#40;</div>
           <button className="round-btns blue-btn" onClick={goBack}>

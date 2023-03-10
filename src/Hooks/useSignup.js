@@ -5,11 +5,12 @@ import Dates from 'Helpers/Dates'
 import Auth from 'Services/Auth'
 
 const useSignup = () => {
+  const { setUserInfo, setTransactions, setPaymentMethods } = useContext(userContext)
+  const navigate = useNavigate()
   const [page, setPage] = useState(1)
   const [accountType, setAccountType] = useState(null)
   const [submitting, setSubmitting] = useState(null)
-  const { setUserInfo, setTransactions, setPaymentMethods } = useContext(userContext)
-  const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const onSubmit = async (userData) => {
     if (userData) {
@@ -43,11 +44,21 @@ const useSignup = () => {
       // setTimeout(success, 3000);
     } catch (error) {
       setSubmitting('error')
+      if (error.response) setErrorMessage(error.response.data)
       console.error(error)
     }
   }
 
-  return { page, setPage, accountType, setAccountType, submitting, setSubmitting, onSubmit }
+  return {
+    page,
+    setPage,
+    accountType,
+    setAccountType,
+    submitting,
+    setSubmitting,
+    errorMessage,
+    onSubmit,
+  }
 }
 
 export default useSignup
