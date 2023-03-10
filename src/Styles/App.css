@@ -2,23 +2,23 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 :root {
-  --bg-primary: hsl(0, 0%, 100%);
   --bg-dirty: hsl(0, 0%, 93%);
+  --bg-primary: hsl(0, 0%, 100%);
   --bg-secondary: #0245a3ff;
+  --error: #fda2a2;
   --font-primary: #000000ff;
   --font-secondary: #fefefe;
+  --light-blue: rgb(51, 96, 159);
   --light: #ffffff;
   --mid: #d5d5d5;
-  --light-blue: rgb(51, 96, 159);
   --text-dark: hsl(0, 0%, 23%);
   --text-light: hsl(0, 0%, 35%);
-  --error: #fda2a2;
 }
 
 /* :root .dark-mode {
@@ -35,36 +35,37 @@ span, div, p {
 }
 
 #root {
-  position: absolute;
+  color: var(--text-dark);
   height: 100vh;
-  width: 100vw;
   overflow: hidden;
-  color: var(--text-dark)
+  position: absolute;
+  width: 100vw;
 }
 
 main {
+  background-color: var(--bg-dirty);
   display: flex;
   flex-direction: column;
-  position: relative;
-  max-width: 100vw;
   height: 100vh;
-  background-color: var(--bg-dirty);
-  overflow: scroll;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
 }
 
 
 .round-btns {
-  height: fit-content;
+  border-radius: 1rem;
+  cursor: pointer;
   font-size: 1.2rem;
+  height: fit-content;
   margin: 0.5rem 0;
   padding: 0.5rem .25rem;
-  border: 1px solid var(--font-secondary);
-  border-radius: 1rem;
   transition: all 0.2s ease-in;
-  cursor: pointer;
 }
 
 .round-btns:disabled {
+  border: 1px solid var(--mid);
   color: var(--mid);
 }
 
@@ -74,32 +75,49 @@ main {
 }
 
 .blue-btn {
-  font-weight: 300;
   background-color: var(--bg-secondary);
+  border: none;
   color: var(--font-secondary);
+  font-weight: 300;
+}
+
+.blue-outline-btn {
+  background-color: #ffffff00;
+  border: 1px solid var(--bg-secondary);
+  color: var(--bg-secondary);
+  font-weight: 400;
 }
 
 .white-btn {
-  font-weight: 400;
   background-color: var(--bg-primary);
+  border: none;
   color: var(--bg-secondary);
+  font-weight: 400;
+}
+
+.white-outline-btn {
+  background-color: #ffffff00;
+  border: 1px solid var(--bg-primary);
+  color: var(--bg-primary);
+  font-weight: 300;
 }
 
 .red-btn {
-  font-weight: 400;
   background-color: #00000000;
-  color: var(--error);
   border: 1px solid var(--error);
+  color: var(--error);
+  font-weight: 400;
 }
 
 
 input {
+  border-radius: 6px;
   border: none;
   outline: 2px solid var(--mid);
-  border-radius: 6px;
   transition: all ease-in .3s;
 }
 
 input:focus {
   outline: 2px solid var(--light-blue);
 }
+

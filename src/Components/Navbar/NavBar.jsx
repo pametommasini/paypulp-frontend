@@ -1,43 +1,29 @@
-import MenuOpenIcon from "@mui/icons-material/MenuOpen";
-import { Avatar, ClickAwayListener } from "@mui/material";
-import { useContext, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import Logo from "../../Assets/Paypulptr.png";
-import { userContext } from "../../Context/UserContext";
-import useWindowSize from "../../Hooks/useWindowSize.js";
-import "../../Styles/NavBar.css";
-import NavAuthBtns from "./NavAuthBtns";
-import NavLinks from "./NavLinks";
-import NavMenu from "./NavMenu";
+import { useContext, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import MenuOpenIcon from '@mui/icons-material/MenuOpen'
+import { Avatar, ClickAwayListener } from '@mui/material'
+import { userContext } from 'Context/UserContext'
+import useWindowSize from 'Hooks/useWindowSize.js'
+import NavAuthBtns from './NavAuthBtns'
+import NavLinks from './NavLinks'
+import NavMenu from './NavMenu'
+import Logo from 'Assets/Paypulptr.png'
+import 'Styles/NavBar.css'
 
 export default function NavBar() {
   // toggle mobile menu
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false)
   // get viewport width
-  const { width } = useWindowSize();
-  const { userInfo, setUserInfo } = useContext(userContext);
-  const navigate = useNavigate();
-  
-  // turn a string to hex color
-  const stringToColor = (string) => {
-    let hash = 0;
-    let i;
-    for (i = 0; i < string.length; i += 1) {
-      hash = string.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    let color = "#";
-    for (i = 0; i < 3; i += 1) {
-      const value = (hash >> (i * 8)) & 0xff;
-      color += `00${value.toString(16)}`.slice(-2);
-    }
-    return color;
-  };
+  const { width } = useWindowSize()
+  const { userInfo, setUserInfo, setTransactions } = useContext(userContext)
+  const navigate = useNavigate()
 
   const signOut = () => {
-    localStorage.clear();
-    setUserInfo({});
-    navigate("");
-  };
+    localStorage.clear()
+    setUserInfo({})
+    setTransactions([])
+    navigate('')
+  }
 
   /**
    * - ClickAwayListener close mobile menu on click outside navbar
@@ -55,53 +41,41 @@ export default function NavBar() {
           {width > 1000 ? (
             <>
               <NavLinks width={width} accountType={userInfo.accountType} />
-
-              {!localStorage.getItem("token") ? (
+              {!localStorage.getItem('token') ? (
                 <NavAuthBtns signOut={signOut} desktop={true} />
               ) : (
                 <div className="nav-avatar-wrapper">
-                  <Avatar
-                    className="nav-avatar"
-                    // sx={userInfo && { bgcolor: stringToColor(userInfo.email) }}
-                    onClick={() => setShowMenu(true)}
-                  ></Avatar>
-                  <button
-                    className={`round-btns blue-btn desktop-dropdown ${
-                      showMenu && "visible"
-                    }`}
-                    onClick={signOut}
-                  >
-                    Sign Out
-                  </button>
+                  {showMenu ? (
+                    <Avatar className="nav-avatar" onClick={() => setShowMenu(true)} />
+                  ) : (
+                    <button
+                      className={`round-btns white-outline-btn ${showMenu && 'visible'}`}
+                      onClick={signOut}>
+                      Sign Out
+                    </button>
+                  )}
                 </div>
               )}
             </>
-          )
-          : 
-          (
+          ) : (
             <>
-              {(!localStorage.getItem("token") ? (
-              <MenuOpenIcon
-                className="menu-icon"
-                fontSize="large"
-                onClick={() => setShowMenu(true)}
-              />
+              {!localStorage.getItem('token') ? (
+                <MenuOpenIcon
+                  className="menu-icon"
+                  fontSize="large"
+                  onClick={() => setShowMenu(true)}
+                />
               ) : (
-              <>
-                <div className="nav-avatar-wrapper">
-                  <Avatar
-                    className="nav-avatar"
-                    // sx={userInfo && { bgcolor: stringToColor(userInfo.email) }}
-                    onClick={() => setShowMenu(true)}
-                  >
-                    {/* {userInfo?.firstName[0].toUpperCase()} */}
-                  </Avatar>
-                </div>
-              </>
-              ))}
+                <>
+                  <div className="nav-avatar-wrapper">
+                    <Avatar className="nav-avatar" onClick={() => setShowMenu(true)} />
+                  </div>
+                </>
+              )}
               <NavMenu
                 showMenu={showMenu}
                 width={width}
+                signOut={signOut}
                 accountType={userInfo.accountType}
               />
             </>
@@ -109,5 +83,5 @@ export default function NavBar() {
         </nav>
       </div>
     </ClickAwayListener>
-  );
+  )
 }

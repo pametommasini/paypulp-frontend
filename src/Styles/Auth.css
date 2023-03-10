@@ -29,7 +29,6 @@
 .auth-card {
   display: flex;
   flex-direction: column;
-  /* justify-self: center; */
   color: var(--text-light);
   width: 100%;
   max-width: 300px;
@@ -38,11 +37,11 @@
 .input-wrapper {
   display: flex;
   flex-direction: column;
+  padding: .5rem 0 0 0;
   transition: all ease-in-out .5s ;
 }
 
 .text-input {
-  /* width: 250px; */
   height: 1.5rem;
   margin: .25rem 0 0rem 0;
   text-align: center;
@@ -62,6 +61,7 @@
   justify-content: space-evenly;
   align-items: center;
   flex-grow: 1;
+  padding: 1rem 0 0 0;
 }
 
 @media (min-width:400px) {

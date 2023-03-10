@@ -1,40 +1,41 @@
-import "../Styles/Submitting.css";
+import 'Styles/Submitting.css'
 
 const Submitting = ({ submitState, location, goBack }) => {
   return (
     <div className="submitting">
-      {submitState === "waiting" ? (
+      {submitState === 'waiting' ? (
         <>
           <div>Your request is being processed</div>
-          <div className="lds-ripple"><div></div><div></div></div>
+          <div className="lds-ripple">
+            <div></div>
+            <div></div>
+          </div>
         </>
-      ) : submitState === "error" ? (
+      ) : submitState === 'error' ? (
         <>
-          <div>We're sorry</div>
-          {location === "signup" && (
-            <div>There has been a problem with your submission</div>
-          )}
-          {location === "gateway" && (
-            <div>There has been a problem with your payment</div>
-          )}
+          <div>We&apos;re sorry</div>
+          {location === 'signup' && <div>There has been a problem with your submission</div>}
+          {location === 'gateway' && <div>There has been a problem with your payment</div>}
           <div>:&#40;</div>
-          <button onClick={goBack}>Go back</button>
+          <button className="round-btns blue-btn" onClick={goBack}>
+            Go back
+          </button>
         </>
-      ) : submitState === "success" ? (
+      ) : submitState === 'success' ? (
         <>
           <div>Congratulations!</div>
-          {location === "signup" && (
+          {location === 'signup' && (
             <>
-            <div>Your account has been successfully created</div>
-            <div>Please stand by while you're being redirected</div>
+              <div>Your account has been successfully created</div>
+              <div>Please stand by while you&apos;re being redirected</div>
             </>
           )}
-          {location === "gateway" && <div>Your payment has gone through.</div>}
+          {location === 'gateway' && <div>Your payment has gone through.</div>}
           <div>:&#41;</div>
         </>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default Submitting;
+export default Submitting

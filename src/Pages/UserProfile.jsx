@@ -1,52 +1,35 @@
-import { Avatar } from "@mui/material";
-import { useContext, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import DashboardCard from "../Components/DashboardCard";
-import CustomerInfo from "../Components/Profile/CustomerInfo";
-import { userContext } from "../Context/UserContext";
-import Dates from "../Helpers/Dates";
-import UserInfo from "../Services/User";
-import "../Styles/UserProfile.css";
+import { Avatar } from '@mui/material'
+import { useContext } from 'react'
+import { useForm } from 'react-hook-form'
+import DashboardCard from '../Components/Dashboard/DashboardCard'
+import CustomerInfo from '../Components/Profile/CustomerInfo'
+import { userContext } from '../Context/UserContext'
+import Dates from '../Helpers/Dates'
+import UserInfo from '../Services/User'
+import '../Styles/UserProfile.css'
 
 const UserProfile = () => {
-  const { userInfo, setUserInfo } = useContext(userContext);
+  const { userInfo } = useContext(userContext)
   const {
     register,
     handleSubmit,
     setFocus,
     formState: { errors },
   } = useForm({
-    mode: "onTouched",
+    mode: 'onTouched',
     values: {
       address: userInfo.address,
       city: userInfo.city,
       country: userInfo.country,
       birthDate: Dates.formatDateYMD(userInfo.birthDate),
-      // securityQuestion: "Who is Robert?",
-      // securityQuestionAnswer: "Who wants to",
     },
-  });
-
-  useEffect(() => {
-    const getUserInfo = async () => {
-      try {
-        const res = await UserInfo.getUserInfo();
-        setUserInfo(res.data);
-      } catch (error) {
-        console.error(error.response.data);
-        // localStorage.clear();
-        // navigate("/");
-      }
-    };
-    getUserInfo();
-  }, []);
+  })
 
   const onSubmit = (userData) => {
-    console.log(userData)
     try {
-      const res = UserInfo.updateUserInfo(userData)
+      UserInfo.updateUserInfo(userData)
     } catch (error) {
-      console.error("🥳SURPRISE!", error);
+      console.error('🥳SURPRISE!', error)
     }
   }
 
@@ -55,13 +38,11 @@ const UserProfile = () => {
       <h2 className="profile-title">Profile</h2>
       <DashboardCard className="profile-basic-info-card">
         <div className="profile-basic-info">
-          <Avatar />
+          <Avatar sx={{ width: 100, height: 100 }} />
           <h2>{`${userInfo.firstName} ${userInfo.lastName}`}</h2>
-          <p>{userInfo.email}</p>
-          <p>{userInfo.phone}</p>
-          <p>
-            Member since: {new Date(userInfo.creationTime).toLocaleDateString()}
-          </p>
+          <p>Email: {userInfo.email}</p>
+          <p>Phone: {userInfo.phone}</p>
+          <p>Member since: {Dates.stringToLocaleString(userInfo.creationTime)}</p>
         </div>
       </DashboardCard>
       <DashboardCard className="profile-costumer-info-card">
@@ -75,7 +56,7 @@ const UserProfile = () => {
         />
       </DashboardCard>
     </section>
-  );
-};
+  )
+}
 
-export default UserProfile;
+export default UserProfile
