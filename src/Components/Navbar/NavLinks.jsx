@@ -27,6 +27,25 @@ const NavLinks = ({ width, accountType }) => {
           <NavLink to="profile">
             <span>Profile</span>
           </NavLink>
+          <NavLink to="/">
+            <span>Placeholder</span>
+          </NavLink>
+          <NavLink to="help">
+            <span>Help</span>
+          </NavLink>
+        </>
+      )}
+      {localStorage.getItem('token') && accountType === 'business' && (
+        <>
+          <NavLink to="dashboard">
+            <span>Dashboard</span>
+          </NavLink>
+          <NavLink to="profile">
+            <span>Profile</span>
+          </NavLink>
+          <NavLink to="/">
+            <span>Placeholder</span>
+          </NavLink>
           <NavLink to="help">
             <span>Help</span>
           </NavLink>
