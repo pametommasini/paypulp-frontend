@@ -12,6 +12,7 @@ import Personal from './Pages/Personal'
 import Signup from './Pages/Public/Signup'
 import UserProfile from './Pages/UserProfile'
 import './Styles/App.css'
+import QrPage from 'Pages/QrPage'
 
 const checkForToken = () => {
   if (!localStorage.getItem('token')) {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: 'developer',
         element: <Developer />,
+      },
+      {
+        path: 'qrpage',
+        element: <QrPage />,
       },
       {
         path: 'help',
