@@ -6,13 +6,13 @@ import useLogin from 'Hooks/useLogin'
 import 'Styles/Auth.css'
 
 const Login = ({ setIsAuth }) => {
-  const params = useLoaderData() // get query params (if logging on gateway or main app)
-  const { loginError, setLoginError, onSubmit } = useLogin(params.isOnGateway, setIsAuth)
+  const queryParams = useLoaderData() // get query queryParams (if logging on gateway or main app)
+  const { loginError, setLoginError, onSubmit } = useLogin(queryParams.isOnGateway, setIsAuth)
   const { register, handleSubmit } = useForm({
     mode: 'onTouched',
     defaultValues: {
-      email: 'masairl@mail.com',
-      password: '1234',
+      email: 'abc@abc.com',
+      password: '1234Q@we',
     },
   })
 
@@ -28,11 +28,11 @@ const Login = ({ setIsAuth }) => {
         />
       </div>
       <Snackbar
-        open={loginError === 'ERR_NETWORK'}
-        autoHideDuration={2000}
+        open={!!loginError}
+        autoHideDuration={3000}
         onClose={() => setLoginError(null)}
         message="Note archived">
-        <Alert severity="warning">Make sure the server is running!</Alert>
+        <Alert severity="error">{loginError}</Alert>
       </Snackbar>
     </div>
   )

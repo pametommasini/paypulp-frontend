@@ -44,14 +44,14 @@ const Input = ({ register, errors, type, name, label, readOnly = false, watch = 
         message: 'Password needs to be less than 20 characters',
       },
       pattern: {
-        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
         message: 'Password needs at least one uppercase and one lowercase letter and one number',
       },
     },
     confirmPassword: {
       required: 'Please confirm your password',
       pattern: {
-        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+        // value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
         message: "Password doesn't match",
       },
       validate: (value) => value === watch('password'),

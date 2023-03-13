@@ -36,9 +36,17 @@ export default function useLogin(isOnGateway, setIsAuth) {
         }
       }
     } catch (error) {
-      if (error.code === 'ERR_NETWORK') setLoginError(error.code)
-      if (error.response?.status === 401) setLoginError(error.response.status)
-      console.error(error)
+      if (error.code === 'ERR_NETWORK') {
+        const connection = 'There&apos;s been a problem. Check your internet conection.'
+        setLoginError(connection)
+        return
+      }
+
+      if (error.response.status === 401) {
+        const validation = error.response.data
+        setLoginError(validation)
+        return
+      }
     }
     try {
       const resTransactions = await Transactions.getTransactions(userUuid)
