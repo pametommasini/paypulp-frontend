@@ -43,7 +43,7 @@ export default function useLogin(isOnGateway, setIsAuth) {
       }
 
       if (error.response.status === 401) {
-        const validation = error.response.data.errors
+        const validation = error.response.data
         setLoginError(validation)
         return
       }

@@ -6,8 +6,8 @@ import useLogin from 'Hooks/useLogin'
 import 'Styles/Auth.css'
 
 const Login = ({ setIsAuth }) => {
-  const params = useLoaderData() // get query params (if logging on gateway or main app)
-  const { loginError, setLoginError, onSubmit } = useLogin(params.isOnGateway, setIsAuth)
+  const queryParams = useLoaderData() // get query queryParams (if logging on gateway or main app)
+  const { loginError, setLoginError, onSubmit } = useLogin(queryParams.isOnGateway, setIsAuth)
   const { register, handleSubmit } = useForm({
     mode: 'onTouched',
     defaultValues: {
