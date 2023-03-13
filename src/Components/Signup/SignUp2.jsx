@@ -7,15 +7,15 @@ const SignUp2 = ({ register, setPage, watch, errors, isValid }) => {
         register={register}
         errors={errors}
         type="shortText"
-        name="lastName"
-        label="Last name:"
+        name="firstName"
+        label="First name:"
       />
       <Input
         register={register}
         errors={errors}
         type="shortText"
-        name="firstName"
-        label="First name:"
+        name="lastName"
+        label="Last name:"
       />
       <Input register={register} errors={errors} type="email" name="email" label="Email:" />
       <Input
